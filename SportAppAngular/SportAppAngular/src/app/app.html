@@ -1,0 +1,34 @@
+<nav class="navbar navbar-dark bg-dark justify-content-start">
+  <a class="navbar-brand" href="#">Events</a>
+  <a class="navbar-brand" href="#">Add Event</a>
+  <a class="navbar-brand" href="#">Leagues</a>
+</nav>
+
+<div class="container">
+    <h2 class="text-center my-5">Events</h2>
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <th>Season</th>
+                <th>Sport</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(event of events; track event.id){
+                <tr>
+                    <td>{{event.season}}</td>
+                    <td>{{event.sport}}</td>
+                    <td>{{event.datevenue}}</td>
+                    <td>{{event.timevenueUtc}}</td>
+                    <td>{{event.homeTeam.name}}</td>
+                    <td>{{event.awayTeam.name}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<router-outlet />

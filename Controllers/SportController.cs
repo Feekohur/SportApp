@@ -19,7 +19,10 @@ namespace SportApp.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Event>>> getSportEvents()
         {
-            List<Event> events = await _context.Events.ToListAsync();
+            List<Event> events = await _context.Events
+                .Include(e => e.HomeTeam)
+                .Include(e => e.AwayTeam)
+                .ToListAsync();
             return Ok(events);
         }
         [HttpGet("{id}")]
